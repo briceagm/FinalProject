@@ -11,6 +11,7 @@ class LoginPage(BasePage):
     PASSWORD_SELECTOR = (By.ID, 'inputPassword')
     LOGIN_BUTTON_SELECTOR = (By.XPATH, '//button[@class="btn btn-success"]')
     USER_NAME_SELECTOR = (By.XPATH, "//a[text()='johndoe@gmail.com']")
+    ERROR_MSG_SELECTOR = (By.XPATH, '//p[@class="bg-danger"]')
 
     def click_my_account_button(self):
         account_button = self.driver.find_element(*self.MY_ACCOUNT_BUTTON_SELECTOR)
@@ -24,12 +25,10 @@ class LoginPage(BasePage):
         password_input = self.driver.find_element(*self.PASSWORD_SELECTOR)
         password_input.send_keys(password)
 
-
-    def login(self, username, password):
-        self.input_username(username)
-        self.input_password(password)
-        self.click_login()
-
+    # def login(self, username, password):
+    #     self.input_username(username)
+    #     self.input_password(password)
+    #     self.click.login()
 
     def click_login_button(self):
         login_button = self.driver.find_element(*self.LOGIN_BUTTON_SELECTOR)
@@ -38,3 +37,7 @@ class LoginPage(BasePage):
     def find_user(self):
         user_name = self.driver.find_element(*self.USER_NAME_SELECTOR)
         return user_name.text
+
+    def get_error_msg(self):
+        error_message_box = self.driver.find_element(*self.ERROR_MSG_SELECTOR)
+        return error_message_box.text
