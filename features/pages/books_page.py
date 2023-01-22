@@ -7,16 +7,18 @@ class BooksPage(BasePage):
 
     URL = 'https://librarius.md/ro/books'
     BOOKS_CATEGORIES_SELECTOR = (By.XPATH, '//li[@class="ac_item"]')
-    ITEM_PER_PAGE_BUTTON_SELECTOR = (By.ID, 'perPageFilter')
+    ITEMS_ON_PAGE_BUTTON_SELECTOR = (By.ID, 'perPageFilter')
     OPTION_WITH_16_BOOKS_SELECTOR = (By.XPATH, '//*[@id="perPageFilter"]/option[1]')
-    OPTION_WITH_16_BOOKS_ON_PAGE_SELECTOR = (By.XPATH, '//div[@class="col-6 col-sm-4 col-md-6 col-lg-2 book-list"]')
+    COUNT_16_BOOKS_ON_PAGE_SELECTOR = (By.XPATH, '//div[@class="col-6 col-sm-4 col-md-6 col-lg-2 book-list"]')
+    SORT_BOOKS_BUTTON_SELECTOR = (By.ID, 'sortByFilter')
+    PRICE_ASCENDING_BUTTON = (By.XPATH, '//*[@id="sortByFilter"]/option[3]')
 
     def get_books_categories_count(self):
         categories = self.driver.find_elements(*self.BOOKS_CATEGORIES_SELECTOR)
         return len(categories)
 
     def click_item_per_page_button(self):
-        item_per_page_button = self.driver.find_element(*self.ITEM_PER_PAGE_BUTTON_SELECTOR)
+        item_per_page_button = self.driver.find_element(*self.ITEMS_ON_PAGE_BUTTON_SELECTOR)
         item_per_page_button.click()
 
     def click_option_with_16_books(self):
@@ -24,5 +26,14 @@ class BooksPage(BasePage):
         option_with_16_books.click()
 
     def get_option_with_16_books_counter(self):
-        option_with_16_books_on_page = self.driver.find_elements(*self.OPTION_WITH_16_BOOKS_ON_PAGE_SELECTOR)
-        return len(option_with_16_books_on_page)
+        count_16_books_on_page = self.driver.find_elements(*self.COUNT_16_BOOKS_ON_PAGE_SELECTOR)
+        return len(count_16_books_on_page)
+
+    def click_sort_books_by_filter(self):
+        sort_books_by_filter = self.driver.find_element(*self.SORT_BOOKS_BUTTON_SELECTOR)
+        sort_books_by_filter.click()
+
+    def click_price_ascending_button(self):
+        price_ascending_button = self.driver.find_element(*self.PRICE_ASCENDING_BUTTON)
+        price_ascending_button.click()
+
