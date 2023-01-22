@@ -12,6 +12,8 @@ class LoginPage(BasePage):
     LOGIN_BUTTON_SELECTOR = (By.XPATH, '//button[@class="btn btn-success"]')
     USER_NAME_SELECTOR = (By.XPATH, "//a[text()='johndoe@gmail.com']")
     ERROR_MSG_SELECTOR = (By.XPATH, '//p[@class="bg-danger"]')
+    LOGOUT_BUTTON_SELECTOR = (By.XPATH, '//a[@href="https://librarius.md/ro/logout"]')
+    CAROUSEL_SELECTOR = (By.XPATH, '//li[@data-target="#carouselExampleIndicators"]')
 
     def click_my_account_button(self):
         account_button = self.driver.find_element(*self.MY_ACCOUNT_BUTTON_SELECTOR)
@@ -25,10 +27,11 @@ class LoginPage(BasePage):
         password_input = self.driver.find_element(*self.PASSWORD_SELECTOR)
         password_input.send_keys(password)
 
-    # def login(self, username, password):
-    #     self.input_username(username)
-    #     self.input_password(password)
-    #     self.click.login()
+    def login(self, username, password):
+        self.click_my_account_button()
+        self.input_username(username)
+        self.input_password(password)
+        self.click_login_button()
 
     def click_login_button(self):
         login_button = self.driver.find_element(*self.LOGIN_BUTTON_SELECTOR)
@@ -41,3 +44,7 @@ class LoginPage(BasePage):
     def get_error_msg(self):
         error_message_box = self.driver.find_element(*self.ERROR_MSG_SELECTOR)
         return error_message_box.text
+
+    def click_logout_button(self):
+        logout_button = self.driver.find_element(*self.LOGOUT_BUTTON_SELECTOR)
+        logout_button.click()

@@ -1,5 +1,3 @@
-import time
-
 from behave import *
 
 
@@ -41,3 +39,11 @@ def step_impl(context):
 @Then("The cart button is incremented by one")
 def step_impl(context):
     assert context.main_page.get_cart_badge_counter() == '1'
+
+
+@When("I click books button")
+def step_impl(context):
+    context.main_page.click_books_button()
+@Then("I am on the books page")
+def step_impl(context):
+    assert context.browser.get_current_url() == context.books_page.URL
