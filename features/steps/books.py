@@ -1,5 +1,6 @@
 from behave import *
 
+
 @Given("I am on the books page")
 def step_impl(context):
     context.books_page.get_page()
@@ -19,9 +20,11 @@ def step_impl(context):
 def step_impl(context):
     context.books_page.click_item_per_page_button()
 
+
 @When("I pick the number 16 from the list")
 def step_impl(context):
     context.books_page.click_option_with_16_books()
+
 
 @Then("There are 16 books on the page")
 def step_impl(context):
@@ -36,6 +39,7 @@ def step_impl(context):
 @When("I pick the option with ascending price")
 def step_impl(context):
     context.books_page.click_price_ascending_button()
+
 
 @Then("There are books ordered ascending on the page")
 def step_impl(context):

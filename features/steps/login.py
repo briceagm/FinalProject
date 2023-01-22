@@ -41,6 +41,7 @@ def step_impl(context):
 def step_impl(context, username, password):
     context.login_page.login(username, password)
 
+
 @When('I click the "Contul meu" button to go on the user menu page')
 def step_impl(context):
     context.login_page.click_my_account_button()
@@ -49,6 +50,7 @@ def step_impl(context):
 @When("On the user menu page I click the logout button")
 def step_impl(context):
     context.login_page.click_logout_button()
+
 
 @Then("I don't find the username on the main page")
 def step_impl(context):

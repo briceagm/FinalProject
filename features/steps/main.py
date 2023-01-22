@@ -44,6 +44,8 @@ def step_impl(context):
 @When("I click books button")
 def step_impl(context):
     context.main_page.click_books_button()
+
+
 @Then("I am on the books page")
 def step_impl(context):
     assert context.browser.get_current_url() == context.books_page.URL
