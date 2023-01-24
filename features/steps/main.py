@@ -1,3 +1,5 @@
+import time
+
 from behave import *
 
 
@@ -49,3 +51,34 @@ def step_impl(context):
 @Then("I am on the books page")
 def step_impl(context):
     assert context.browser.get_current_url() == context.books_page.URL
+
+
+@When('I add an product "{book}" to cart')
+def step_impl(context, book):
+    context.main_page.search_and_add_product_to_cart(book)
+
+
+@When('I click the basket button')
+def step_impl(context):
+    context.main_page.click_basket_button()
+
+
+@When('I click on the delete icon')
+def step_impl(context):
+    context.main_page.click_delete_icon()
+    time.sleep(5)
+
+
+@Then('The cart counter becomes 0')
+def step_impl(context):
+    assert context.main_page.get_cart_counter() == '0'
+
+
+@When("I click the 'Librarii' button")
+def step_impl(context):
+    context.main_page.click_bookstore_button()
+
+
+@Then("There are 47 locations of points of sales")
+def step_impl(context):
+    assert context.main_page.get_locations_count() == 47

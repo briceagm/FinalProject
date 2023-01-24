@@ -46,3 +46,12 @@ def step_impl(context):
     pass
     # assert context.browser.get_current_url() == context.books_page.URL
 
+
+@When("I click on the logo 'Librarius' button")
+def step_impl(context):
+    context.books_page.click_logo_button()
+
+
+@Then("I am on the main page")
+def step_impl(context):
+    assert context.browser.get_current_url() == context.main_page.URL

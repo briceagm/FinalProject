@@ -20,3 +20,15 @@ Feature: Main Page
      Given I am on the main page Librarius
      When I click books button
      Then I am on the books page
+
+   Scenario: Delete product from cart
+     Given I am on the main page Librarius
+     When I add an product "Alchimistul" to cart
+     And I click the basket button
+     And I click on the delete icon
+     Then The cart counter becomes 0
+
+   Scenario: Has 47 locations of points of sales
+     Given I am on the main page Librarius
+     When I click the 'Librarii' button
+     Then There are 47 locations of point of sales

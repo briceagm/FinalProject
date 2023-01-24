@@ -16,3 +16,8 @@ Feature: Books Menu
     When I click the drop and down button 'by filter'
     And I pick the option with ascending price
     Then There are books ordered ascending on the page
+
+  Scenario: Check the logo button
+    Given I am on the books page
+    When I click on the logo 'Librarius' button
+    Then I am on the main page

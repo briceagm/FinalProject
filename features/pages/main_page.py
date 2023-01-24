@@ -13,7 +13,11 @@ class MainPage(BasePage):
     ADD_TO_CART_BUTTON_SELECTOR = (By.ID, 'addToCartButton')
     CART_BADGE_SELECTOR = (By.XPATH, '//*[@id="header-cart-count-badge"]/b')
     BOOKS_BUTTON_SELECTOR = (By.XPATH, '//*[@id="topmenu"]/div/a[2]/span')
-
+    BASKET_BUTTON_SELECTOR = (By.CLASS_NAME, 'show-basket')
+    DELETE_ICON_SELECTOR = (By.XPATH, "//i[@class='fa fa-trash']")
+    CART_COUNTER_SELECTOR = (By.XPATH, '//span[@class="sb-footer-total-count"]')
+    BOOKSTORE_BUTTON_SELECTOR = (By.XPATH, '//div[@class="top-bar-wrapper tb-darkgrey"]/a[4]')
+    LOCATIONS_COUNT_SELECTOR = (By.XPATH, '//div[@class="shop-item list-group-item"]')
     def click_search_box(self):
         search_box = self.driver.find_element(*self.SEARCH_BOX_SELECTOR)
         search_box.click()
@@ -45,3 +49,30 @@ class MainPage(BasePage):
     def click_books_button(self):
         books_button = self.driver.find_element(*self.BOOKS_BUTTON_SELECTOR)
         books_button.click()
+
+    def search_and_add_product_to_cart(self, book):
+        self.click_search_box()
+        self.input_name_of_the_book(book)
+        self.click_search_button()
+        self.click_book_title()
+        self.click_add_to_cart_button()
+
+    def click_basket_button(self):
+        basket_button = self.driver.find_element(*self.BASKET_BUTTON_SELECTOR)
+        basket_button.click()
+
+    def click_delete_icon(self):
+        delete_icon = self.driver.find_element(*self.DELETE_ICON_SELECTOR)
+        delete_icon.click()
+
+    def get_cart_counter(self):
+        cart_counter = self.driver.find_element(*self.CART_COUNTER_SELECTOR)
+        return cart_counter.text
+
+    def click_bookstore_button(self):
+        bookstore_button = self.driver.find_element(*self.BOOKSTORE_BUTTON_SELECTOR)
+        bookstore_button.click()
+
+    def get_locations_count(self):
+        locations_count = self.driver.find_elements(*self.LOCATIONS_COUNT_SELECTOR)
+        return len(locations_count)

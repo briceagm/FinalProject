@@ -11,8 +11,8 @@ class BooksPage(BasePage):
     OPTION_WITH_16_BOOKS_SELECTOR = (By.XPATH, '//*[@id="perPageFilter"]/option[1]')
     COUNT_16_BOOKS_ON_PAGE_SELECTOR = (By.XPATH, '//div[@class="col-6 col-sm-4 col-md-6 col-lg-2 book-list"]')
     SORT_BOOKS_BUTTON_SELECTOR = (By.ID, 'sortByFilter')
-    PRICE_ASCENDING_BUTTON = (By.XPATH, '//*[@id="sortByFilter"]/option[3]')
-
+    PRICE_ASCENDING_BUTTON_SELECTOR = (By.XPATH, '//*[@id="sortByFilter"]/option[3]')
+    LOGO_BUTTON_SELECTOR = (By.CLASS_NAME, 'header-logo-text')
     def get_books_categories_count(self):
         categories = self.driver.find_elements(*self.BOOKS_CATEGORIES_SELECTOR)
         return len(categories)
@@ -34,6 +34,9 @@ class BooksPage(BasePage):
         sort_books_by_filter.click()
 
     def click_price_ascending_button(self):
-        price_ascending_button = self.driver.find_element(*self.PRICE_ASCENDING_BUTTON)
+        price_ascending_button = self.driver.find_element(*self.PRICE_ASCENDING_BUTTON_SELECTOR)
         price_ascending_button.click()
 
+    def click_logo_button(self):
+        logo_button = self.driver.find_element(*self.LOGO_BUTTON_SELECTOR)
+        logo_button.click()
