@@ -1,3 +1,5 @@
+import time
+
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 
@@ -18,6 +20,9 @@ class MainPage(BasePage):
     CART_COUNTER_SELECTOR = (By.XPATH, '//span[@class="sb-footer-total-count"]')
     BOOKSTORE_BUTTON_SELECTOR = (By.XPATH, '//div[@class="top-bar-wrapper tb-darkgrey"]/a[4]')
     LOCATIONS_COUNT_SELECTOR = (By.XPATH, '//div[@class="shop-item list-group-item"]')
+    SHOW_SIDE_BAR_BUTTON_SELECTOR = (By.XPATH, "//a[@class='showsidebar']")
+    CLOSE_SIDE_BAR_BUTTON_SELECTOR = (By.XPATH, "//a[@class='close-sidenav']")
+
     def click_search_box(self):
         search_box = self.driver.find_element(*self.SEARCH_BOX_SELECTOR)
         search_box.click()
@@ -76,3 +81,11 @@ class MainPage(BasePage):
     def get_locations_count(self):
         locations_count = self.driver.find_elements(*self.LOCATIONS_COUNT_SELECTOR)
         return len(locations_count)
+
+    def click_show_side_bar_button(self):
+        show_side_bar_button = self.driver.find_element(*self.SHOW_SIDE_BAR_BUTTON_SELECTOR)
+        show_side_bar_button.click()
+
+    def click_close_bar_button(self):
+        close_bar_button = self.driver.find_element(*self.CLOSE_SIDE_BAR_BUTTON_SELECTOR)
+        close_bar_button.click()

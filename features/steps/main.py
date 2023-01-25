@@ -82,3 +82,18 @@ def step_impl(context):
 @Then("There are 47 locations of points of sales")
 def step_impl(context):
     assert context.main_page.get_locations_count() == 47
+
+
+@When("I click show sidebar and sidebar appears")
+def step_impl(context):
+    context.main_page.click_show_side_bar_button()
+
+
+@When("I click on close sidebar button and sidebar is hidden")
+def step_impl(context):
+    context.main_page.click_close_bar_button()
+
+
+@Then("I am on the main page Librarius")
+def step_impl(context):
+    assert context.browser.get_current_url() == context.main_page.URL

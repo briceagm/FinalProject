@@ -6,7 +6,7 @@ For this project I decide to make some tests on website of a bookstore named Lib
 
 Librarius is a website of a bookstore where a logged-in or non-logged-in user can order books, games and school supplies.
 
-The project contains 3 features, 13 scenarios and 60 steps. All of them passes successful.
+The project contains 3 features, 14 scenarios and 64 steps. All of them passes successful.
 
 The first feature 'Login LIBRARIUS' has 4 scenarios:
 1. Login successful
@@ -14,14 +14,15 @@ The first feature 'Login LIBRARIUS' has 4 scenarios:
 3. Login fail with credentials: username: johndo@gmail.com and password: librarius123
 4. Logout successful
 
-The second feature 'Main Page' has 3 scenarios:
+The second feature 'Main Page' has 6 scenarios:
 1. Search product
 2. Add product to cart
 3. Go to Books Page
 4. Delete product from cart
 5. Has 47 locations of points of sales
+6. Verify the sidebar functionality
 
-The third feature 'Books Menu' has 3 scenarios:
+The third feature 'Books Menu' has 4 scenarios:
 1. Has 11 categories of the books on the menu
 2. Change number of books per page to 16 books per page
 3. Sort books by the ascending price
