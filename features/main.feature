@@ -33,7 +33,7 @@ Feature: Main Page
      When I click the 'Librarii' button
      Then There are 47 locations of points of sales
 
-
+#@single
    Scenario: Verify the sidebar functionality
       Given I am on the main page Librarius
       When I click show sidebar and sidebar appears
